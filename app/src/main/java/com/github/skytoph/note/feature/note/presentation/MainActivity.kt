@@ -1,4 +1,4 @@
-package com.github.skytoph.note
+package com.github.skytoph.note.feature.note.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
