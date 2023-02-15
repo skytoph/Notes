@@ -7,6 +7,7 @@ import com.github.skytoph.note.feature.note.data.datasource.NoteDao
 import com.github.skytoph.note.feature.note.data.datasource.NoteDatabase
 import com.github.skytoph.note.feature.note.data.repository.BaseNoteRepository
 import com.github.skytoph.note.feature.note.domain.repository.NoteRepository
+import com.github.skytoph.note.feature.note.domain.usecase.AddNote
 import com.github.skytoph.note.feature.note.domain.usecase.DeleteNote
 import com.github.skytoph.note.feature.note.domain.usecase.GetNotes
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
@@ -36,6 +37,7 @@ object AppModule {
     fun notesUseCases(repository: NoteRepository): NoteUseCases =
         NoteUseCases(
             getNotes = GetNotes(repository),
-            deleteNote = DeleteNote(repository)
+            deleteNote = DeleteNote(repository),
+            addNote = AddNote(repository)
         )
 }
