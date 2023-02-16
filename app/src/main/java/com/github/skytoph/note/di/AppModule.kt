@@ -1,17 +1,11 @@
 package com.github.skytoph.note.di
 
 import android.app.Application
-import android.provider.ContactsContract.CommonDataKinds.Note
 import androidx.room.Room
-import com.github.skytoph.note.feature.note.data.datasource.NoteDao
 import com.github.skytoph.note.feature.note.data.datasource.NoteDatabase
 import com.github.skytoph.note.feature.note.data.repository.BaseNoteRepository
 import com.github.skytoph.note.feature.note.domain.repository.NoteRepository
-import com.github.skytoph.note.feature.note.domain.usecase.AddNote
-import com.github.skytoph.note.feature.note.domain.usecase.DeleteNote
-import com.github.skytoph.note.feature.note.domain.usecase.GetNotes
-import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
-import dagger.Binds
+import com.github.skytoph.note.feature.note.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,6 +32,7 @@ object AppModule {
         NoteUseCases(
             getNotes = GetNotes(repository),
             deleteNote = DeleteNote(repository),
-            addNote = AddNote(repository)
+            addNote = AddNote(repository),
+            getNote = GetNote(repository)
         )
 }
