@@ -88,7 +88,7 @@ fun NotesScreen(
                                 )
                             },
                         onDeleteClick = {
-                            viewModel.onEvent(NotesEvent.Delete(note))
+                            viewModel.deleteNote(note)
                             scope.launch {
                                 val result: SnackbarResult =
                                     scaffoldState.snackbarHostState.showSnackbar(
@@ -96,7 +96,7 @@ fun NotesScreen(
                                         actionLabel = "Undo"
                                     )
                                 if (result == SnackbarResult.ActionPerformed) {
-                                    viewModel.onEvent(NotesEvent.RestoreNote)
+                                    viewModel.restoreNote()
                                 }
                             }
                         }

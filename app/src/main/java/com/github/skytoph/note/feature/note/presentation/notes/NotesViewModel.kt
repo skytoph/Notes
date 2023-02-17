@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.domain.notes.interactor.NotesInteractor
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 import com.github.skytoph.note.feature.note.domain.util.NoteOrder
 import com.github.skytoph.note.feature.note.domain.util.OrderType
@@ -16,7 +17,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NotesViewModel @Inject constructor(private val noteUseCases: NoteUseCases) : ViewModel() {
+class NotesViewModel @Inject constructor(
+    private val noteUseCases: NoteUseCases,
+    private val interactor: NotesInteractor
+) : ViewModel() {
 
     private val _state = mutableStateOf(NotesState())
     val state: State<NotesState> = _state
@@ -37,18 +41,6 @@ class NotesViewModel @Inject constructor(private val noteUseCases: NoteUseCases)
                 ) return
                 getNotes(event.noteOrder)
             }
-            is NotesEvent.Delete -> {
-                viewModelScope.launch {
-                    noteUseCases.deleteNote(event.note)
-                    recentlyDeletedNote = event.note
-                }
-            }
-            is NotesEvent.RestoreNote -> {
-                viewModelScope.launch {
-                    noteUseCases.addNote(recentlyDeletedNote ?: return@launch)
-                    recentlyDeletedNote = null
-                }
-            }
             is NotesEvent.ToggleOrderSection -> {
                 _state.value =
                     state.value.copy(isOrderSectionVisible = !state.value.isOrderSectionVisible)
@@ -66,4 +58,8 @@ class NotesViewModel @Inject constructor(private val noteUseCases: NoteUseCases)
                 )
             }.launchIn(viewModelScope)
     }
+
+    fun deleteNote(note: Note) = viewModelScope.launch { interactor.deleteNote(note) }
+
+    fun restoreNote() = viewModelScope.launch { interactor.restoreNote() }
 }
