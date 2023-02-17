@@ -11,11 +11,14 @@ import com.github.skytoph.note.feature.note.domain.usecase.*
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNoteViewModel
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.interactor.BaseAddEditNoteInteractor
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.mapper.BaseUiEventMapper
+import com.github.skytoph.note.feature.note.presentation.notes.CachedJob
 import com.github.skytoph.note.feature.note.presentation.notes.interactor.BaseNotesInteractor
 import com.github.skytoph.note.feature.note.presentation.notes.interactor.NoteCache
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -42,18 +45,28 @@ object AppModule {
             addNote = AddNote(repository),
             getNote = GetNote(repository)
         )
+}
+
+@Module
+@InstallIn(ViewModelComponent::class)
+object AddEditNoteModule{
 
     @Provides
-    @Singleton
-    fun uiEventMapper(): AddEditNoteViewModel.UiEventMapper = BaseUiEventMapper()
-
-    @Provides
-    @Singleton
+    @ViewModelScoped
     fun addEditNoteInteractor(useCases: NoteUseCases): AddEditNoteInteractor =
         BaseAddEditNoteInteractor(useCases)
 
     @Provides
-    @Singleton
-    fun addNotesInteractor(useCases: NoteUseCases): NotesInteractor =
+    @ViewModelScoped
+    fun uiEventMapper(): AddEditNoteViewModel.UiEventMapper = BaseUiEventMapper()
+}
+
+@Module
+@InstallIn(ViewModelComponent::class)
+object NotesModule{
+
+    @Provides
+    @ViewModelScoped
+    fun notesInteractor(useCases: NoteUseCases): NotesInteractor =
         BaseNotesInteractor(useCases, NoteCache())
 }
