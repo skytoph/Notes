@@ -69,4 +69,8 @@ object NotesModule{
     @ViewModelScoped
     fun notesInteractor(useCases: NoteUseCases): NotesInteractor =
         BaseNotesInteractor(useCases, NoteCache())
+
+    @Provides
+    @ViewModelScoped
+    fun job(): CachedJob = CachedJob.Base()
 }
