@@ -1,6 +1,5 @@
 package com.github.skytoph.note.feature.note.presentation.add_edit_note.components
 
-import android.widget.Space
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -62,7 +61,7 @@ fun AddEditNoteScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    viewModel.onEvent(AddEditNoteEvent.SaveNote)
+                    viewModel.saveNote()
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
