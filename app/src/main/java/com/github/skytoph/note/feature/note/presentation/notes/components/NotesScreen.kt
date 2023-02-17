@@ -1,5 +1,6 @@
 package com.github.skytoph.note.feature.note.presentation.notes.components
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -21,6 +22,7 @@ import com.github.skytoph.note.feature.note.presentation.notes.NotesViewModel
 import com.github.skytoph.note.feature.note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NotesScreen(
     navController: NavController,
@@ -45,7 +47,7 @@ fun NotesScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(16.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),

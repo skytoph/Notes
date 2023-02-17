@@ -1,5 +1,6 @@
 package com.github.skytoph.note.feature.note.presentation.add_edit_note.components
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -27,6 +28,7 @@ import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNo
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun AddEditNoteScreen(
     navController: NavController,
@@ -69,12 +71,12 @@ fun AddEditNoteScreen(
             }
         },
         scaffoldState = scaffoldState
-    ) { padding ->
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(noteBackgroundAnimatable.value)
-                .padding(padding)
+                .padding(16.dp)
         ) {
             Row(
                 modifier = Modifier
