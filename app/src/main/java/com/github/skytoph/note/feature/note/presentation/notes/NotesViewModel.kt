@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.notes.interactor.NotesInteractor
-import com.github.skytoph.note.feature.note.domain.util.NoteOrder
-import com.github.skytoph.note.feature.note.domain.util.OrderType
+import com.github.skytoph.note.feature.note.domain.order.NoteOrder
+import com.github.skytoph.note.feature.note.domain.order.OrderType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

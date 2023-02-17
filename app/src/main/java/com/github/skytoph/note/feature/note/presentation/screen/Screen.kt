@@ -1,4 +1,4 @@
-package com.github.skytoph.note.feature.note.presentation.util
+package com.github.skytoph.note.feature.note.presentation.screen
 
 sealed class Screen(val route: String) {
     object NotesScreen : Screen("notes_screen")

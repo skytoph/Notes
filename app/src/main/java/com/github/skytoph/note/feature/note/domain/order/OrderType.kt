@@ -1,4 +1,4 @@
-package com.github.skytoph.note.feature.note.domain.util
+package com.github.skytoph.note.feature.note.domain.order
 
 sealed class OrderType {
     object Ascending : OrderType()

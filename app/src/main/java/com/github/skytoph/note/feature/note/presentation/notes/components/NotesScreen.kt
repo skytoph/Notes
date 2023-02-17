@@ -19,7 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.github.skytoph.note.feature.note.presentation.notes.NotesEvent
 import com.github.skytoph.note.feature.note.presentation.notes.NotesViewModel
-import com.github.skytoph.note.feature.note.presentation.util.Screen
+import com.github.skytoph.note.feature.note.presentation.screen.Screen
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

@@ -1,8 +1,8 @@
 package com.github.skytoph.note.feature.note.presentation.notes
 
 import com.github.skytoph.note.feature.note.domain.model.Note
-import com.github.skytoph.note.feature.note.domain.util.NoteOrder
-import com.github.skytoph.note.feature.note.domain.util.OrderType
+import com.github.skytoph.note.feature.note.domain.order.NoteOrder
+import com.github.skytoph.note.feature.note.domain.order.OrderType
 
 data class NotesState(
     val notes: List<Note> = emptyList(),

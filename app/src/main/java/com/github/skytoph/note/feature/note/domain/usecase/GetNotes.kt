@@ -2,8 +2,8 @@ package com.github.skytoph.note.feature.note.domain.usecase
 
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.repository.NoteRepository
-import com.github.skytoph.note.feature.note.domain.util.NoteOrder
-import com.github.skytoph.note.feature.note.domain.util.OrderType
+import com.github.skytoph.note.feature.note.domain.order.NoteOrder
+import com.github.skytoph.note.feature.note.domain.order.OrderType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
