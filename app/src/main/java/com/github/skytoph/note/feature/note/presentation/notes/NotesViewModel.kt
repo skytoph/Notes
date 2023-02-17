@@ -27,20 +27,7 @@ class NotesViewModel @Inject constructor(
         getNotes(NoteOrder.Date(OrderType.Descending))
     }
 
-    fun onEvent(event: NotesEvent) {
-        when (event) {
-            is NotesEvent.Order -> {
-                if (state.value.noteOrder::class == event.noteOrder::class &&
-                    state.value.noteOrder == event.noteOrder.orderType
-                ) return
-                getNotes(event.noteOrder)
-            }
-            is NotesEvent.ToggleOrderSection -> {
-                _state.value =
-                    state.value.copy(isOrderSectionVisible = !state.value.isOrderSectionVisible)
-            }
-        }
-    }
+    fun onEvent(event: NotesEvent) = event.show(_state, ::getNotes)
 
     private fun getNotes(noteOrder: NoteOrder) {
         interactor.getNotes(noteOrder).onEach { notes ->

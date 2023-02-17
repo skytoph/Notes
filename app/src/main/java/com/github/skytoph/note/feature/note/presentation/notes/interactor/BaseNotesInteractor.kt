@@ -4,13 +4,14 @@ import com.github.skytoph.note.feature.note.data.cache.MutableCache
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.notes.interactor.NotesInteractor
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
+import com.github.skytoph.note.feature.note.domain.util.NoteOrder
 
 class BaseNotesInteractor(
     private val useCases: NoteUseCases,
     private val noteCache: MutableCache<Note?>
 ) : NotesInteractor {
 
-    override fun getNotes() = useCases.getNotes()
+    override fun getNotes(order: NoteOrder) = useCases.getNotes(order)
 
     override suspend fun restoreNote() {
         useCases.addNote(noteCache.getCached() ?: return)
@@ -23,8 +24,7 @@ class BaseNotesInteractor(
     }
 }
 
-class NoteCache : MutableCache<Note?> {
-    private var data: Note? = null
+class NoteCache(private var data: Note? = null) : MutableCache<Note?> {
 
     override fun cache(data: Note?) {
         this.data = data

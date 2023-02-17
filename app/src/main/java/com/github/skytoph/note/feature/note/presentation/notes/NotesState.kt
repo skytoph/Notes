@@ -8,4 +8,8 @@ data class NotesState(
     val notes: List<Note> = emptyList(),
     val noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending),
     val isOrderSectionVisible: Boolean = false
-)
+) {
+
+    fun sameAs(order: NoteOrder) =
+        noteOrder::class == order::class && noteOrder == order.orderType
+}
