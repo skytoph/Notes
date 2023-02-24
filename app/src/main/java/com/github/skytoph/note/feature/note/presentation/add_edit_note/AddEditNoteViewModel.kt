@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.skytoph.note.feature.note.domain.add_edit_note.interactor.AddEditNoteInteractor
 import com.github.skytoph.note.feature.note.domain.add_edit_note.interactor.NoteOperationResult
 import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.presentation.screen.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -38,7 +39,7 @@ class AddEditNoteViewModel @Inject constructor(
     private var currentNoteId: Int? = null
 
     init {
-        savedStateHandle.get<Int>("noteId")?.let { noteId ->
+        savedStateHandle.get<Int>(Screen.AddEditNoteScreen.noteIdArg)?.let { noteId ->
             if (noteId != -1) {
                 viewModelScope.launch {
                     interactor.getNote(noteId)?.also { note ->

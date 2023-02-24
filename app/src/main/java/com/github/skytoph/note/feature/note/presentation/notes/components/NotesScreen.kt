@@ -36,13 +36,21 @@ fun NotesScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navController.navigate(route = Screen.AddEditNoteScreen.route)
+                    navController.navigate(route = Screen.AddEditNoteScreen.screenRoute)
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add new note")
             }
-        }, scaffoldState = scaffoldState
+        }, scaffoldState = scaffoldState,
+        snackbarHost = {
+            SnackbarHost(it) { data ->
+                Snackbar(
+                    actionColor = MaterialTheme.colors.primary,
+                    snackbarData = data
+                )
+            }
+        }
     ) {
         Column(
             modifier = Modifier
@@ -85,8 +93,8 @@ fun NotesScreen(
                             .fillMaxWidth()
                             .clickable {
                                 navController.navigate(
-                                    route = Screen.AddEditNoteScreen.route +
-                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                    route = Screen.AddEditNoteScreen(note.id.toString(), note.color)
+                                        .route
                                 )
                             },
                         onDeleteClick = {

@@ -16,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
@@ -90,6 +91,7 @@ fun AddEditNoteScreen(
                         modifier = Modifier
                             .size(50.dp)
                             .shadow(15.dp, CircleShape)
+                            .clip(CircleShape)
                             .background(color)
                             .border(
                                 width = 3.dp,
