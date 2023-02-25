@@ -24,15 +24,4 @@ class BaseNotesInteractor(
     }
 }
 
-class NoteCache(private var data: Note? = null) : MutableCache<Note?> {
-
-    override fun cache(data: Note?) {
-        this.data = data
-    }
-
-    override fun getCached(): Note? = data
-
-    override fun clear() {
-        data = null
-    }
-}
+class NoteCache : MutableCache.Nullable<Note>()
