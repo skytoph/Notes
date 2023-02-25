@@ -1,68 +1,37 @@
 package com.github.skytoph.note.feature.note.presentation.add_edit_note
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.focus.FocusState
+import com.github.skytoph.note.feature.note.presentation.add_edit_note.state.NoteCommunication
 
 sealed class AddEditNoteEvent {
-    abstract fun handle(
-        noteTitle: MutableState<NoteTextFieldState>,
-        noteContent: MutableState<NoteTextFieldState>,
-        noteColor: MutableState<Int>
-    )
+    abstract fun handle(communication: NoteCommunication.ChangeNoteState)
 
     data class EnteredTitle(val value: String) : AddEditNoteEvent() {
-        override fun handle(
-            noteTitle: MutableState<NoteTextFieldState>,
-            noteContent: MutableState<NoteTextFieldState>,
-            noteColor: MutableState<Int>
-        ) {
-            noteTitle.value = noteTitle.value.copy(text = value)
-        }
+
+        override fun handle(communication: NoteCommunication.ChangeNoteState) =
+            communication.showTitle(title = value)
     }
 
     data class ChangeTitleFocus(val focusState: FocusState) : AddEditNoteEvent() {
-        override fun handle(
-            noteTitle: MutableState<NoteTextFieldState>,
-            noteContent: MutableState<NoteTextFieldState>,
-            noteColor: MutableState<Int>
-        ) {
-            noteTitle.value = noteTitle.value.copy(
-                isHintVisible =
-                !focusState.isFocused && noteTitle.value.text.isBlank()
-            )
-        }
+
+        override fun handle(communication: NoteCommunication.ChangeNoteState) =
+            communication.showTitle(titleFocus = focusState)
     }
 
     data class EnteredContent(val value: String) : AddEditNoteEvent() {
-        override fun handle(
-            noteTitle: MutableState<NoteTextFieldState>,
-            noteContent: MutableState<NoteTextFieldState>,
-            noteColor: MutableState<Int>
-        ) {
-            noteContent.value = noteContent.value.copy(text = value)
-        }
+
+        override fun handle(communication: NoteCommunication.ChangeNoteState) =
+            communication.showContent(content = value)
     }
 
     data class ChangeContentFocus(val focusState: FocusState) : AddEditNoteEvent() {
-        override fun handle(
-            noteTitle: MutableState<NoteTextFieldState>,
-            noteContent: MutableState<NoteTextFieldState>,
-            noteColor: MutableState<Int>
-        ) {
-            noteContent.value = noteContent.value.copy(
-                isHintVisible =
-                !focusState.isFocused && noteContent.value.text.isBlank()
-            )
-        }
+
+        override fun handle(communication: NoteCommunication.ChangeNoteState) =
+            communication.showContent(contentFocus = focusState)
     }
 
     data class ChangeColor(val color: Int) : AddEditNoteEvent() {
-        override fun handle(
-            noteTitle: MutableState<NoteTextFieldState>,
-            noteContent: MutableState<NoteTextFieldState>,
-            noteColor: MutableState<Int>
-        ) {
-            noteColor.value = color
-        }
+        override fun handle(communication: NoteCommunication.ChangeNoteState) =
+            communication.showColor(color = color)
     }
 }

@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNoteEvent
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNoteViewModel
+import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -36,24 +37,26 @@ fun AddEditNoteScreen(
     noteColor: Int,
     viewModel: AddEditNoteViewModel = hiltViewModel(),
 ) {
-    val titleState = viewModel.noteTitle.value
-    val contentState = viewModel.noteContent.value
+    val state = viewModel.provideState()
+    val titleState = state.titleState().value
+    val contentState = state.contentState().value
+    val colorState = state.colorState().value
 
     val scaffoldState = rememberScaffoldState()
 
     val noteBackgroundAnimatable = remember {
-        Animatable(initialValue = Color(if (noteColor != -1) noteColor else viewModel.noteColor.value))
+        Animatable(initialValue = Color(if (noteColor != -1) noteColor else colorState))
     }
 
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(key1 = true) {
-        viewModel.eventFlow.collectLatest { event ->
+        state.flow().collectLatest { event ->
             when (event) {
-                is AddEditNoteViewModel.UiEvent.ShowSnackbar -> {
+                is UiEvent.ShowSnackbar -> {
                     scaffoldState.snackbarHostState.showSnackbar(message = event.message)
                 }
-                AddEditNoteViewModel.UiEvent.SaveNote -> {
+                UiEvent.SaveNote -> {
                     navController.navigateUp()
                 }
             }
@@ -95,7 +98,7 @@ fun AddEditNoteScreen(
                             .background(color)
                             .border(
                                 width = 3.dp,
-                                color = if (viewModel.noteColor.value == colorInt) Color.Black else Color.Transparent,
+                                color = if (colorState == colorInt) Color.Black else Color.Transparent,
                                 shape = CircleShape
                             )
                             .clickable {

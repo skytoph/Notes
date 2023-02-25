@@ -6,8 +6,7 @@ import com.github.skytoph.note.feature.note.domain.model.InvalidNoteException
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 
-class BaseAddEditNoteInteractor(private val noteUseCases: NoteUseCases) :
-    AddEditNoteInteractor {
+class BaseAddEditNoteInteractor(private val noteUseCases: NoteUseCases) : AddEditNoteInteractor {
     override suspend fun getNote(id: Int): Note? = noteUseCases.getNote(id)
 
     override suspend fun saveNote(note: Note) = try {
