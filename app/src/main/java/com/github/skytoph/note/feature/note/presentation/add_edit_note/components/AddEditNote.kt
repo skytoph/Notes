@@ -21,11 +21,14 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -48,7 +51,7 @@ fun AddEditNote(
 ) {
     val scaffoldState = rememberScaffoldState()
 
-    val noteBackgroundAnimatable = remember {
+    val noteBackgroundAnimation = remember {
         Animatable(initialValue = Color(if (noteColor != -1) noteColor else colorState))
     }
 
@@ -81,7 +84,7 @@ fun AddEditNote(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(noteBackgroundAnimatable.value)
+                .background(noteBackgroundAnimation.value)
                 .padding(16.dp)
         ) {
             Row(
@@ -93,7 +96,7 @@ fun AddEditNote(
                 Note.noteColors.forEach { colorIterate ->
                     val colorInt = colorIterate.toArgb()
                     Box(
-                        modifier = androidx.compose.ui.Modifier
+                        modifier = Modifier
                             .size(50.dp)
                             .shadow(15.dp, CircleShape)
                             .clip(CircleShape)
@@ -105,7 +108,7 @@ fun AddEditNote(
                             )
                             .clickable {
                                 scope.launch {
-                                    noteBackgroundAnimatable.animateTo(
+                                    noteBackgroundAnimation.animateTo(
                                         targetValue = Color(colorInt),
                                         animationSpec = tween(durationMillis = 500)
                                     )
@@ -115,7 +118,7 @@ fun AddEditNote(
                     )
                 }
             }
-            Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = title.text,
                 hint = title.hint,
@@ -125,7 +128,7 @@ fun AddEditNote(
                 isSingleLine = true,
                 textStyle = MaterialTheme.typography.h5
             )
-            Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = content.text,
                 hint = content.hint,
@@ -138,4 +141,17 @@ fun AddEditNote(
             )
         }
     }
+}
+
+@Composable
+@Preview(showSystemUi = true, showBackground = true)
+fun AddEditNotePreview(){
+    AddEditNote(
+        navController = rememberNavController(),
+        noteColor = -1,
+        title = NoteTextFieldState("Title","",false),
+        content = NoteTextFieldState("Content of the note","",false),
+        colorState = Note.noteColors.first().toArgb(),
+        flow = MutableSharedFlow()
+    )
 }

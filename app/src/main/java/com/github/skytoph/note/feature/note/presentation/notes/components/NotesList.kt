@@ -14,8 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.presentation.notes.NotesState
@@ -41,7 +44,8 @@ fun NotesList(
                 onClick = {
                     navController.navigate(route = Screen.AddEditNoteScreen.screenRoute)
                 },
-                backgroundColor = MaterialTheme.colors.primary
+                backgroundColor = MaterialTheme.colors.primary,
+                elevation = FloatingActionButtonDefaults.elevation(0.dp, 0.dp)
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add new note")
             }
@@ -66,7 +70,7 @@ fun NotesList(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
+                    text = "Notes",
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(onClick = onOrderClick) {
@@ -117,4 +121,15 @@ fun NotesList(
             }
         }
     }
+}
+
+@Composable
+@Preview(showSystemUi = true, showBackground = true)
+fun NotesScreenPreview() {
+    val notes = Note.noteColors.map { color -> Note("Note title", "Content...", 1, color.toArgb()) }
+
+    NotesList(
+        navController = rememberNavController(),
+        state = NotesState(notes)
+    )
 }
