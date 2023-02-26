@@ -3,10 +3,15 @@ package com.github.skytoph.note.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val DarkGray = Color(0xFF202020)
-val LightBlue = Color(0xFFD7E8DE)
+val LightBlue = Color(0xFFECEDF6)
 
-val RedOrange = Color(0xffffab91)
-val RedPink = Color(0xfff48fb1)
-val BabyBlue = Color(0xff81deea)
-val Violet = Color(0xffcf94da)
-val LightGreen = Color(0xffe7ed9b)
+val RedOrange = Color(0xffE67389)
+val Yellow = Color(0xffE6CB73)
+val Pink = Color(0xffD792EF)
+val Green = Color(0xff75E688)
+val Blue = Color(0xff7382E6)
+
+val BlueDark = Color(0xff5561AC)
+
+val LightGray = Color(0xff2C2735)
+val Black = Color(0xff1D1A22)
