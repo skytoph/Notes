@@ -47,14 +47,7 @@ fun AddEditNote(
 
     LaunchedEffect(key1 = true) {
         flow.collectLatest { event ->
-            when (event) {
-                is UiEvent.ShowSnackbar -> {
-                    scaffoldState.snackbarHostState.showSnackbar(message = event.message)
-                }
-                UiEvent.SaveNote -> {
-                    navController.navigateUp()
-                }
-            }
+            event.handle(navController, scaffoldState.snackbarHostState)
         }
     }
 
@@ -62,7 +55,8 @@ fun AddEditNote(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = onSave,
-                backgroundColor = MaterialTheme.colors.primary
+                backgroundColor = MaterialTheme.colors.primary,
+                elevation = FloatingActionButtonDefaults.elevation(0.dp, 0.dp)
             ) {
                 Icon(imageVector = Icons.Default.Save, contentDescription = "Save note")
             }
