@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.ui.theme.NoteAppTheme
 
 @Composable
 fun NoteItem(
@@ -129,5 +130,7 @@ fun NoteItem(
 @Composable
 @Preview(showBackground = false)
 fun NoteItemPreview() {
-    NoteItem(Note("Note title", "Content...", 1, Note.noteColors.first().toArgb()))
+    NoteAppTheme {
+        NoteItem(Note("Note title", "Content...", 1, Note.noteColors.first().toArgb()))
+    }
 }

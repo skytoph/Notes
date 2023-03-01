@@ -2,7 +2,6 @@ package com.github.skytoph.note.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val DarkGray = Color(0xFF202020)
 val LightBlue = Color(0xFFECEDF6)
 
 val RedOrange = Color(0xffE67389)
@@ -14,4 +13,4 @@ val Blue = Color(0xff7382E6)
 val BlueDark = Color(0xff5561AC)
 
 val LightGray = Color(0xff2C2735)
-val Black = Color(0xff1D1A22)
+val DarkGray = Color(0xff1D1A22)

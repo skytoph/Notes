@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,6 +24,7 @@ import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.presentation.notes.NotesState
 import com.github.skytoph.note.feature.note.presentation.screen.Screen
+import com.github.skytoph.note.ui.theme.NoteAppTheme
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -53,7 +55,7 @@ fun NotesList(
         snackbarHost = {
             SnackbarHost(it) { data ->
                 Snackbar(
-                    actionColor = MaterialTheme.colors.primary,
+                    actionColor = Color.White,
                     snackbarData = data
                 )
             }
@@ -128,8 +130,10 @@ fun NotesList(
 fun NotesScreenPreview() {
     val notes = Note.noteColors.map { color -> Note("Note title", "Content...", 1, color.toArgb()) }
 
-    NotesList(
-        navController = rememberNavController(),
-        state = NotesState(notes)
-    )
+    NoteAppTheme {
+        NotesList(
+            navController = rememberNavController(),
+            state = NotesState(notes)
+        )
+    }
 }
