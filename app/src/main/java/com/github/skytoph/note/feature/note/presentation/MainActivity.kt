@@ -39,14 +39,9 @@ class MainActivity : ComponentActivity() {
                                 navArgument(name = Screen.AddEditNoteScreen.noteIdArg) {
                                     type = NavType.IntType
                                     defaultValue = -1
-                                },
-                                navArgument(name = Screen.AddEditNoteScreen.noteColorArg) {
-                                    type = NavType.IntType
-                                    defaultValue = -1
                                 })
                         ) {
-                            val color = it.arguments?.getInt(Screen.AddEditNoteScreen.noteColorArg) ?: -1
-                            AddEditNoteScreen(navController = navController, noteColor = color)
+                            AddEditNoteScreen(navController = navController)
                         }
                     }
                 }

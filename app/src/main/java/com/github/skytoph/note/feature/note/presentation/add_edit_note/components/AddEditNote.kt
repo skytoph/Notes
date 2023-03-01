@@ -1,8 +1,6 @@
 package com.github.skytoph.note.feature.note.presentation.add_edit_note.components
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -13,11 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
@@ -28,16 +23,15 @@ import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
+import com.github.skytoph.note.ui.theme.NoteAppTheme
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun AddEditNote(
     navController: NavController,
-    noteColor: Int,
     title: NoteTextFieldState,
     content: NoteTextFieldState,
     colorState: Int,
@@ -50,12 +44,6 @@ fun AddEditNote(
     onContentFocusChanged: (FocusState) -> Unit = {},
 ) {
     val scaffoldState = rememberScaffoldState()
-
-    val noteBackgroundAnimation = remember {
-        Animatable(initialValue = Color(if (noteColor != -1) noteColor else colorState))
-    }
-
-    val scope = rememberCoroutineScope()
 
     LaunchedEffect(key1 = true) {
         flow.collectLatest { event ->
@@ -84,7 +72,6 @@ fun AddEditNote(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(noteBackgroundAnimation.value)
                 .padding(16.dp)
         ) {
             Row(
@@ -98,21 +85,14 @@ fun AddEditNote(
                     Box(
                         modifier = Modifier
                             .size(50.dp)
-                            .shadow(15.dp, CircleShape)
                             .clip(CircleShape)
                             .background(colorIterate)
                             .border(
                                 width = 3.dp,
-                                color = if (colorState == colorInt) Color.Black else Color.Transparent,
+                                color = if (colorState == colorInt) MaterialTheme.colors.onSurface else Color.Transparent,
                                 shape = CircleShape
                             )
                             .clickable {
-                                scope.launch {
-                                    noteBackgroundAnimation.animateTo(
-                                        targetValue = Color(colorInt),
-                                        animationSpec = tween(durationMillis = 500)
-                                    )
-                                }
                                 onSelectColor(colorInt)
                             }
                     )
@@ -126,7 +106,7 @@ fun AddEditNote(
                 onFocusChange = onTitleFocusChanged,
                 isHintVisible = title.isHintVisible,
                 isSingleLine = true,
-                textStyle = MaterialTheme.typography.h5
+                textStyle = MaterialTheme.typography.h5.copy(color = MaterialTheme.colors.onSurface)
             )
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
@@ -136,7 +116,7 @@ fun AddEditNote(
                 onFocusChange = onContentFocusChanged,
                 isHintVisible = content.isHintVisible,
                 isSingleLine = false,
-                textStyle = MaterialTheme.typography.body1,
+                textStyle = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.onSurface),
                 modifier = Modifier.fillMaxHeight()
             )
         }
@@ -145,13 +125,14 @@ fun AddEditNote(
 
 @Composable
 @Preview(showSystemUi = true, showBackground = true)
-fun AddEditNotePreview(){
-    AddEditNote(
-        navController = rememberNavController(),
-        noteColor = -1,
-        title = NoteTextFieldState("Title","",false),
-        content = NoteTextFieldState("Content of the note","",false),
-        colorState = Note.noteColors.first().toArgb(),
-        flow = MutableSharedFlow()
-    )
+fun AddEditNotePreview() {
+    NoteAppTheme(darkTheme = true) {
+        AddEditNote(
+            navController = rememberNavController(),
+            title = NoteTextFieldState("Title", "", false),
+            content = NoteTextFieldState("Content of the note", "", false),
+            colorState = Note.noteColors.first().toArgb(),
+            flow = MutableSharedFlow()
+        )
+    }
 }

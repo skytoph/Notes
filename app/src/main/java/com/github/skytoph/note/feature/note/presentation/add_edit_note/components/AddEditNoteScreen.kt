@@ -9,7 +9,6 @@ import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNo
 @Composable
 fun AddEditNoteScreen(
     navController: NavController,
-    noteColor: Int,
     viewModel: AddEditNoteViewModel = hiltViewModel(),
 ) {
     val state = viewModel.provideState()
@@ -19,7 +18,6 @@ fun AddEditNoteScreen(
 
     AddEditNote(
         navController = navController,
-        noteColor = noteColor,
         title = titleState.value,
         content = contentState.value,
         colorState = colorState.value,
@@ -28,7 +26,6 @@ fun AddEditNoteScreen(
         onSave = { viewModel.saveNote() },
         onTitleChanged = { viewModel.onEvent(AddEditNoteEvent.EnteredTitle(it)) },
         onTitleFocusChanged = { viewModel.onEvent(AddEditNoteEvent.ChangeTitleFocus(it)) },
-        onContentChanged = { viewModel.onEvent(AddEditNoteEvent.EnteredContent(it)) },
-        onContentFocusChanged = { viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it)) }
-    )
+        onContentChanged = { viewModel.onEvent(AddEditNoteEvent.EnteredContent(it)) }
+    ) { viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it)) }
 }

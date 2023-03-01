@@ -100,8 +100,7 @@ fun NotesList(
                             .fillMaxWidth()
                             .clickable {
                                 navController.navigate(
-                                    route = Screen.AddEditNoteScreen(note.id.toString(), note.color)
-                                        .route
+                                    route = Screen.AddEditNoteScreen(note.id.toString()).route
                                 )
                             },
                         onDeleteClick = {
@@ -128,9 +127,16 @@ fun NotesList(
 @Composable
 @Preview(showSystemUi = true, showBackground = true)
 fun NotesScreenPreview() {
-    val notes = Note.noteColors.map { color -> Note("Note title", "Content...", 1, color.toArgb()) }
+    val notes = Note.noteColors.map { color ->
+        Note(
+            "Note title",
+            "Content...\nContent...\nContent...",
+            1,
+            color.toArgb()
+        )
+    }
 
-    NoteAppTheme {
+    NoteAppTheme(darkTheme = true) {
         NotesList(
             navController = rememberNavController(),
             state = NotesState(notes)

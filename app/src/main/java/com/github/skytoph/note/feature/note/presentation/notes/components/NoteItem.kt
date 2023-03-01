@@ -103,12 +103,11 @@ fun NoteItem(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = note.content,
                 style = MaterialTheme.typography.body1,
                 color = MaterialTheme.colors.onSurface,
-                maxLines = 10,
+                maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
         }
