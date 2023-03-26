@@ -123,23 +123,3 @@ fun NotesList(
         }
     }
 }
-
-@Composable
-@Preview(showSystemUi = true, showBackground = true)
-fun NotesScreenPreview() {
-    val notes = Note.noteColors.map { color ->
-        Note(
-            "Note title",
-            "Content...\nContent...\nContent...",
-            1,
-            color.toArgb()
-        )
-    }
-
-    NoteAppTheme(darkTheme = true) {
-        NotesList(
-            navController = rememberNavController(),
-            state = NotesState(notes)
-        )
-    }
-}

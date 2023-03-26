@@ -116,17 +116,3 @@ fun AddEditNote(
         }
     }
 }
-
-@Composable
-@Preview(showSystemUi = true, showBackground = true)
-fun AddEditNotePreview() {
-    NoteAppTheme(darkTheme = true) {
-        AddEditNote(
-            navController = rememberNavController(),
-            title = NoteTextFieldState("Title", "", false),
-            content = NoteTextFieldState("Content of the note", "", false),
-            colorState = Note.noteColors.first().toArgb(),
-            flow = MutableSharedFlow()
-        )
-    }
-}

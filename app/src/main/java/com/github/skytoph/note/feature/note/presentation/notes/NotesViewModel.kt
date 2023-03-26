@@ -27,9 +27,9 @@ class NotesViewModel @Inject constructor(
         getNotes(NoteOrder.Date(OrderType.Descending))
     }
 
-    fun onEvent(event: NotesEvent) = event.show(_state, ::getNotes)
+    fun onEvent(event: NotesEvent) = event.show(_state)
 
-    private fun getNotes(noteOrder: NoteOrder) {
+    fun getNotes(noteOrder: NoteOrder) {
         interactor.getNotes(noteOrder).onEach { notes ->
             onEvent(NotesEvent.CacheNotes(noteOrder, notes))
         }.launchIn(viewModelScope).also { job -> getCachedJob.cancelAndCache(job) }
