@@ -10,8 +10,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.github.skytoph.note.feature.note.presentation.add_edit_note.components.AddEditNoteScreen
-import com.github.skytoph.note.feature.note.presentation.notes.components.NotesScreen
+import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNoteScreen
+import com.github.skytoph.note.feature.note.presentation.notes.NotesScreen
 import com.github.skytoph.note.feature.note.presentation.screen.Screen
 import com.github.skytoph.note.ui.theme.NoteAppTheme
 import dagger.hilt.android.AndroidEntryPoint

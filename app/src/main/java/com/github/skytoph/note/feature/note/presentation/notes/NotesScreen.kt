@@ -1,4 +1,4 @@
-package com.github.skytoph.note.feature.note.presentation.notes.components
+package com.github.skytoph.note.feature.note.presentation.notes
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.toArgb
@@ -7,9 +7,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.feature.note.domain.model.Note
-import com.github.skytoph.note.feature.note.presentation.notes.NotesEvent
-import com.github.skytoph.note.feature.note.presentation.notes.NotesState
-import com.github.skytoph.note.feature.note.presentation.notes.NotesViewModel
+import com.github.skytoph.note.feature.note.presentation.notes.components.NotesList
 import com.github.skytoph.note.ui.theme.NoteAppTheme
 
 @Composable

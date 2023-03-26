@@ -7,7 +7,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.github.skytoph.note.feature.note.presentation.notes.components.NotesScreenPreview
+import com.github.skytoph.note.feature.note.presentation.notes.NotesScreenPreview
 
 private val DarkColorPalette = darkColors(
     primary = Color.White,

@@ -1,4 +1,4 @@
-package com.github.skytoph.note.feature.note.presentation.add_edit_note.components
+package com.github.skytoph.note.feature.note.presentation.add_edit_note
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.toArgb
@@ -7,9 +7,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.feature.note.domain.model.Note
-import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNoteEvent
-import com.github.skytoph.note.feature.note.presentation.add_edit_note.AddEditNoteViewModel
-import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
+import com.github.skytoph.note.feature.note.presentation.add_edit_note.components.AddEditNote
 import com.github.skytoph.note.ui.theme.NoteAppTheme
 import kotlinx.coroutines.flow.MutableSharedFlow
 
