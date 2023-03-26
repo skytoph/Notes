@@ -16,10 +16,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.github.skytoph.note.R
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.presentation.notes.NotesState
@@ -49,7 +51,7 @@ fun NotesList(
                 backgroundColor = MaterialTheme.colors.primary,
                 elevation = FloatingActionButtonDefaults.elevation(0.dp, 0.dp)
             ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add new note")
+                Icon(imageVector = Icons.Default.Add, contentDescription = stringResource(R.string.add_new_note))
             }
         }, scaffoldState = scaffoldState,
         snackbarHost = {
@@ -72,11 +74,11 @@ fun NotesList(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Notes",
+                    text = stringResource(R.string.notes),
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(onClick = onOrderClick) {
-                    Icon(imageVector = Icons.Default.Sort, contentDescription = "Sort")
+                    Icon(imageVector = Icons.Default.Sort, contentDescription = stringResource(R.string.sort))
                 }
             }
             AnimatedVisibility(
@@ -95,6 +97,9 @@ fun NotesList(
             Spacer(modifier = Modifier.height(16.dp))
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(state.notes) { note ->
+                    val message = stringResource(R.string.message_note_deleted)
+                    val actionLabel = stringResource(R.string.undo)
+
                     NoteItem(note = note,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -108,8 +113,8 @@ fun NotesList(
                             scope.launch {
                                 val result: SnackbarResult =
                                     scaffoldState.snackbarHostState.showSnackbar(
-                                        message = "Note deleted",
-                                        actionLabel = "Undo"
+                                        message = message,
+                                        actionLabel = actionLabel
                                     )
                                 if (result == SnackbarResult.ActionPerformed) {
                                     onUndoClick()
