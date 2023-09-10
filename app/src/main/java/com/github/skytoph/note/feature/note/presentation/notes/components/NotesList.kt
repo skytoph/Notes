@@ -15,18 +15,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.R
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.presentation.notes.NotesState
 import com.github.skytoph.note.feature.note.presentation.screen.Screen
-import com.github.skytoph.note.ui.theme.NoteAppTheme
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -51,7 +47,10 @@ fun NotesList(
                 backgroundColor = MaterialTheme.colors.primary,
                 elevation = FloatingActionButtonDefaults.elevation(0.dp, 0.dp)
             ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = stringResource(R.string.add_new_note))
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.add_new_note)
+                )
             }
         }, scaffoldState = scaffoldState,
         snackbarHost = {
@@ -66,7 +65,7 @@ fun NotesList(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(top = 16.dp, start = 16.dp, end = 16.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -78,7 +77,10 @@ fun NotesList(
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(onClick = onOrderClick) {
-                    Icon(imageVector = Icons.Default.Sort, contentDescription = stringResource(R.string.sort))
+                    Icon(
+                        imageVector = Icons.Default.Sort,
+                        contentDescription = stringResource(R.string.sort)
+                    )
                 }
             }
             AnimatedVisibility(
