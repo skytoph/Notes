@@ -1,10 +1,10 @@
 package com.github.skytoph.note.feature.note.domain.add_edit_note.interactor
 
-import com.github.skytoph.note.feature.note.data.model.Note
+import com.github.skytoph.note.feature.note.data.model.NoteEntity
 
 interface AddEditNoteInteractor {
-    suspend fun getNote(id: Int): Note?
-    suspend fun saveNote(note: Note): NoteOperationResult
+    suspend fun getNote(id: Int): NoteEntity?
+    suspend fun saveNote(note: NoteEntity): NoteOperationResult
 }
 
 sealed class NoteOperationResult {

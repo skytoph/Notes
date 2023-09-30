@@ -2,10 +2,10 @@ package com.github.skytoph.note.feature.note.data.datasource
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.github.skytoph.note.feature.note.data.model.Note
+import com.github.skytoph.note.feature.note.data.model.NoteEntity
 
 @Database(
-    entities = [Note::class],
+    entities = [NoteEntity::class],
     version = 1
 )
 abstract class NoteDatabase : RoomDatabase() {

@@ -1,6 +1,6 @@
 package com.github.skytoph.note.feature.note.domain.usecase
 
-import com.github.skytoph.note.feature.note.data.model.Note
+import com.github.skytoph.note.feature.note.data.model.NoteEntity
 import com.github.skytoph.note.feature.note.domain.repository.NoteRepository
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.domain.order.OrderType
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.map
 
 class GetNotes(private val repository: NoteRepository) {
 
-    operator fun invoke(noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending)): Flow<List<Note>> {
+    operator fun invoke(noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending)): Flow<List<NoteEntity>> {
         return repository.getNotes().map { notes ->
             when (noteOrder.orderType) {
                 is OrderType.Ascending -> {

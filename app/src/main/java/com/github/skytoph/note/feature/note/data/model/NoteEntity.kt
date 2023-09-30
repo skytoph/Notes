@@ -3,8 +3,8 @@ package com.github.skytoph.note.feature.note.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
-data class Note(
+@Entity(tableName = "note")
+data class NoteEntity(
     val title: String,
     val content: String,
     val timestamp: Long,

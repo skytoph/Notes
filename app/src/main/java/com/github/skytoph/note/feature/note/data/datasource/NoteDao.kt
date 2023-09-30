@@ -1,21 +1,21 @@
 package com.github.skytoph.note.feature.note.data.datasource
 
 import androidx.room.*
-import com.github.skytoph.note.feature.note.data.model.Note
+import com.github.skytoph.note.feature.note.data.model.NoteEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
 
     @Query("SELECT * FROM note")
-    fun getNotes(): Flow<List<Note>>
+    fun getNotes(): Flow<List<NoteEntity>>
 
     @Query("SELECT * FROM note WHERE id = :id")
-    suspend fun getNote(id: Int): Note?
+    suspend fun getNote(id: Int): NoteEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(note: Note)
+    suspend fun insertNote(note: NoteEntity)
 
     @Delete
-    suspend fun deleteNote(note: Note)
+    suspend fun deleteNote(note: NoteEntity)
 }

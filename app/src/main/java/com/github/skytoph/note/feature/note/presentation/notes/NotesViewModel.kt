@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.skytoph.note.feature.note.data.model.Note
+import com.github.skytoph.note.feature.note.data.model.NoteEntity
 import com.github.skytoph.note.feature.note.domain.notes.interactor.NotesInteractor
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.domain.order.OrderType
@@ -35,7 +35,7 @@ class NotesViewModel @Inject constructor(
         }.launchIn(viewModelScope).also { job -> getCachedJob.cancelAndCache(job) }
     }
 
-    fun deleteNote(note: Note) = viewModelScope.launch { interactor.deleteNote(note) }
+    fun deleteNote(note: NoteEntity) = viewModelScope.launch { interactor.deleteNote(note) }
 
     fun restoreNote() = viewModelScope.launch { interactor.restoreNote() }
 }
