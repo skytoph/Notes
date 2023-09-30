@@ -11,5 +11,3 @@ data class NoteEntity(
     val color: Int,
     @PrimaryKey val id: Int? = null
 )
-
-class InvalidNoteException(message: String) : Exception(message)

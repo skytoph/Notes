@@ -1,6 +1,6 @@
 package com.github.skytoph.note.feature.note.domain.add_edit_note.interactor
 
-import com.github.skytoph.note.feature.note.data.model.InvalidNoteException
+import com.github.skytoph.note.feature.note.domain.exception.InvalidNoteException
 import com.github.skytoph.note.feature.note.data.model.NoteEntity
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 
