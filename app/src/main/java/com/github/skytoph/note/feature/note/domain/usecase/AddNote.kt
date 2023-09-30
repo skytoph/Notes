@@ -1,7 +1,7 @@
 package com.github.skytoph.note.feature.note.domain.usecase
 
-import com.github.skytoph.note.feature.note.domain.model.InvalidNoteException
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.InvalidNoteException
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.feature.note.domain.repository.NoteRepository
 
 class AddNote(private val repository: NoteRepository) {

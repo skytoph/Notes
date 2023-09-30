@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.feature.note.domain.notes.interactor.NotesInteractor
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.domain.order.OrderType

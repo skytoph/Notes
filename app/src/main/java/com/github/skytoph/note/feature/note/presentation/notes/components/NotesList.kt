@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.github.skytoph.note.R
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 import com.github.skytoph.note.feature.note.presentation.notes.NotesState
 import com.github.skytoph.note.feature.note.presentation.screen.Screen

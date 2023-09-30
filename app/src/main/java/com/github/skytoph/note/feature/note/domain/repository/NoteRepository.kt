@@ -1,6 +1,6 @@
 package com.github.skytoph.note.feature.note.domain.repository
 
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {

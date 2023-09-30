@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.feature.note.presentation.notes.components.NotesList
 import com.github.skytoph.note.ui.theme.NoteAppTheme
 import com.github.skytoph.note.ui.theme.NoteColors

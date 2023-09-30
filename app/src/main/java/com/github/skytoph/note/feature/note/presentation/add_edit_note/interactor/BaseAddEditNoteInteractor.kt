@@ -2,8 +2,8 @@ package com.github.skytoph.note.feature.note.presentation.add_edit_note.interact
 
 import com.github.skytoph.note.feature.note.domain.add_edit_note.interactor.AddEditNoteInteractor
 import com.github.skytoph.note.feature.note.domain.add_edit_note.interactor.NoteOperationResult
-import com.github.skytoph.note.feature.note.domain.model.InvalidNoteException
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.InvalidNoteException
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 
 class BaseAddEditNoteInteractor(private val noteUseCases: NoteUseCases) : AddEditNoteInteractor {

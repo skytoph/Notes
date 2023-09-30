@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.github.skytoph.note.R
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.ui.theme.NoteAppTheme
 import com.github.skytoph.note.ui.theme.NoteColors
 

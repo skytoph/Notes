@@ -1,6 +1,6 @@
 package com.github.skytoph.note.feature.note.domain.add_edit_note.interactor
 
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 
 interface AddEditNoteInteractor {
     suspend fun getNote(id: Int): Note?

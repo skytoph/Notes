@@ -2,7 +2,7 @@ package com.github.skytoph.note.feature.note.presentation.add_edit_note.state
 
 import androidx.compose.runtime.State
 import androidx.compose.ui.focus.FocusState
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
 import kotlinx.coroutines.flow.SharedFlow

@@ -1,7 +1,7 @@
 package com.github.skytoph.note.feature.note.presentation.notes
 
 import androidx.compose.runtime.MutableState
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 
 sealed class NotesEvent {

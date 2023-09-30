@@ -2,7 +2,7 @@ package com.github.skytoph.note.feature.note.data.datasource
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.github.skytoph.note.feature.note.domain.model.Note
+import com.github.skytoph.note.feature.note.data.model.Note
 
 @Database(
     entities = [Note::class],

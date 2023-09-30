@@ -1,4 +1,4 @@
-package com.github.skytoph.note.feature.note.domain.model
+package com.github.skytoph.note.feature.note.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
