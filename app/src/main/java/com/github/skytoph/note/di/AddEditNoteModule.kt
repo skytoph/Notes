@@ -4,7 +4,7 @@ import com.github.skytoph.note.feature.note.domain.add_edit_note.interactor.AddE
 import com.github.skytoph.note.feature.note.domain.cache.MutableCache
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEventMapper
-import com.github.skytoph.note.feature.note.presentation.add_edit_note.interactor.BaseAddEditNoteInteractor
+import com.github.skytoph.note.feature.note.domain.add_edit_note.interactor.BaseAddEditNoteInteractor
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.mapper.BaseUiEventMapper
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.state.BaseNoteCommunication
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.state.NoteCommunication
