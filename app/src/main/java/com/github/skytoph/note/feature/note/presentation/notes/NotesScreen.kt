@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.notes.components.NotesList
 import com.github.skytoph.note.ui.theme.NoteAppTheme
+import com.github.skytoph.note.ui.theme.NoteColors
 
 @Composable
 fun NotesScreen(
@@ -28,7 +29,7 @@ fun NotesScreen(
 @Composable
 @Preview(showSystemUi = true, showBackground = true)
 fun NotesScreenPreview() {
-    val notes = Note.noteColors.map { color ->
+    val notes = NoteColors.list.map { color ->
         Note(
             "Note title", "Content...", 1, color.toArgb()
         )

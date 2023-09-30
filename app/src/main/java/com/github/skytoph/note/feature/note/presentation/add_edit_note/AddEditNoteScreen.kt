@@ -9,9 +9,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.github.skytoph.note.R
-import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.components.AddEditNote
 import com.github.skytoph.note.ui.theme.NoteAppTheme
+import com.github.skytoph.note.ui.theme.NoteColors
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 @Composable
@@ -50,7 +50,7 @@ fun AddEditNotePreview() {
             navController = rememberNavController(),
             title = NoteTextFieldState("Title", "", false),
             content = NoteTextFieldState("Content of the note", "", false),
-            colorState = Note.noteColors.first().toArgb(),
+            colorState = NoteColors.list.first().toArgb(),
             flow = MutableSharedFlow()
         )
     }

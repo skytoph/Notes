@@ -16,15 +16,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
-import com.github.skytoph.note.ui.theme.NoteAppTheme
-import kotlinx.coroutines.flow.MutableSharedFlow
+import com.github.skytoph.note.ui.theme.NoteColors
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 
@@ -74,7 +70,7 @@ fun AddEditNote(
                     .padding(8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Note.noteColors.forEach { colorIterate ->
+                NoteColors.list.forEach { colorIterate ->
                     val colorInt = colorIterate.toArgb()
                     Box(
                         modifier = Modifier

@@ -14,3 +14,7 @@ val BlueDark = Color(0xff5561AC)
 
 val LightGray = Color(0xff2C2735)
 val DarkGray = Color(0xff1D1A22)
+
+object NoteColors {
+    val list = listOf(RedOrange, Yellow, Pink, Green, Blue)
+}

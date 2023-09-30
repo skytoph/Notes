@@ -2,7 +2,10 @@ package com.github.skytoph.note.feature.note.presentation.notes.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -14,7 +17,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.*
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.RoundRect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
@@ -27,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.github.skytoph.note.R
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.ui.theme.NoteAppTheme
+import com.github.skytoph.note.ui.theme.NoteColors
 
 @Composable
 fun NoteItem(
@@ -132,6 +140,6 @@ fun NoteItem(
 @Preview(showBackground = false)
 fun NoteItemPreview() {
     NoteAppTheme {
-        NoteItem(Note("Note title", "Content...", 1, Note.noteColors.first().toArgb()))
+        NoteItem(Note("Note title", "Content...", 1, NoteColors.list.first().toArgb()))
     }
 }

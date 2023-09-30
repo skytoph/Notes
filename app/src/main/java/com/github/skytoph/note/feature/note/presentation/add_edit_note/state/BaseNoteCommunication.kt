@@ -9,6 +9,7 @@ import com.github.skytoph.note.feature.note.data.cache.MutableCache
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
+import com.github.skytoph.note.ui.theme.NoteColors
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 
@@ -17,7 +18,7 @@ class BaseNoteCommunication(
         mutableStateOf(NoteTextFieldState()),
     private val noteContent: MutableState<NoteTextFieldState> =
         mutableStateOf(NoteTextFieldState()),
-    private val noteColor: MutableState<Int> = mutableStateOf(Note.noteColors.random().toArgb()),
+    private val noteColor: MutableState<Int> = mutableStateOf(NoteColors.list.random().toArgb()),
     private val eventFlow: MutableSharedFlow<UiEvent> = MutableSharedFlow(),
     private val noteIdCache: NoteIdCache
 ) : NoteCommunication.Mutable, NoteCommunication {
