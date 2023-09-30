@@ -1,5 +1,5 @@
 package com.github.skytoph.note.feature.note.data.cache
 
-import com.github.skytoph.note.feature.note.data.model.NoteEntity
+import com.github.skytoph.note.feature.note.domain.model.Note
 
-class NoteCache : NullableCache<NoteEntity>()
+class NoteCache : NullableCache<Note>()

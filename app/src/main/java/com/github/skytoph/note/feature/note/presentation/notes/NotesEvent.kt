@@ -1,7 +1,7 @@
 package com.github.skytoph.note.feature.note.presentation.notes
 
 import androidx.compose.runtime.MutableState
-import com.github.skytoph.note.feature.note.data.model.NoteEntity
+import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
 
 sealed class NotesEvent {
@@ -14,7 +14,7 @@ sealed class NotesEvent {
         }
     }
 
-    data class CacheNotes(val noteOrder: NoteOrder, val notes: List<NoteEntity>) : NotesEvent() {
+    data class CacheNotes(val noteOrder: NoteOrder, val notes: List<Note>) : NotesEvent() {
         override fun show(state: MutableState<NotesState>) {
             state.value = state.value.copy(notes = notes, noteOrder = noteOrder)
         }

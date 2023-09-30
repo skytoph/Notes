@@ -2,7 +2,7 @@ package com.github.skytoph.note.feature.note.presentation.add_edit_note.state
 
 import androidx.compose.runtime.State
 import androidx.compose.ui.focus.FocusState
-import com.github.skytoph.note.feature.note.data.model.NoteEntity
+import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
 import kotlinx.coroutines.flow.SharedFlow
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.SharedFlow
 interface NoteCommunication {
 
     interface ChangeNoteState {
-        fun showNote(note: NoteEntity)
+        fun showNote(note: Note)
         fun showColor(color: Int? = null)
         fun showTitle(
             title: String? = null, hint: String? = null, titleFocus: FocusState? = null
@@ -32,7 +32,7 @@ interface NoteCommunication {
     }
 
     interface ShowNote {
-        fun showNote(note: NoteEntity)
+        fun showNote(note: Note)
         suspend fun emitToFlow(event: UiEvent)
     }
 
@@ -44,7 +44,7 @@ interface NoteCommunication {
     }
 
     interface MakeNote {
-        fun note(): NoteEntity
+        fun note(): Note
     }
 
     interface Mutable : ChangeNoteState, ShowNote, Get, MakeNote, SetNoteState
