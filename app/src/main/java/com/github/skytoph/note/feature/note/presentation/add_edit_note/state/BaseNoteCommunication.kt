@@ -5,8 +5,6 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.graphics.toArgb
-import com.github.skytoph.note.R
-import com.github.skytoph.note.feature.note.core.Resources
 import com.github.skytoph.note.feature.note.data.cache.MutableCache
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
@@ -15,11 +13,10 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 
 class BaseNoteCommunication(
-    resourceProvider: Resources.Strings,
     private val noteTitle: MutableState<NoteTextFieldState> =
-        mutableStateOf(NoteTextFieldState(hint = resourceProvider.string(R.string.edit_title))),
+        mutableStateOf(NoteTextFieldState()),
     private val noteContent: MutableState<NoteTextFieldState> =
-        mutableStateOf(NoteTextFieldState(hint = resourceProvider.string(R.string.edit_content))),
+        mutableStateOf(NoteTextFieldState()),
     private val noteColor: MutableState<Int> = mutableStateOf(Note.noteColors.random().toArgb()),
     private val eventFlow: MutableSharedFlow<UiEvent> = MutableSharedFlow(),
     private val noteIdCache: NoteIdCache
