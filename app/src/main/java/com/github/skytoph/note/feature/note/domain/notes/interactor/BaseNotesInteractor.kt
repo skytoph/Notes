@@ -1,10 +1,9 @@
-package com.github.skytoph.note.feature.note.presentation.notes.interactor
+package com.github.skytoph.note.feature.note.domain.notes.interactor
 
-import com.github.skytoph.note.feature.note.data.cache.MutableCache
 import com.github.skytoph.note.feature.note.data.model.NoteEntity
-import com.github.skytoph.note.feature.note.domain.notes.interactor.NotesInteractor
-import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
+import com.github.skytoph.note.feature.note.domain.cache.MutableCache
 import com.github.skytoph.note.feature.note.domain.order.NoteOrder
+import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 
 class BaseNotesInteractor(
     private val useCases: NoteUseCases,
@@ -23,5 +22,3 @@ class BaseNotesInteractor(
         noteCache.cache(note)
     }
 }
-
-class NoteCache : MutableCache.Nullable<NoteEntity>()

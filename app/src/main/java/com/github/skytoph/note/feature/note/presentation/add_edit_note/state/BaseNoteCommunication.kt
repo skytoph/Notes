@@ -5,8 +5,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.graphics.toArgb
-import com.github.skytoph.note.feature.note.data.cache.MutableCache
 import com.github.skytoph.note.feature.note.data.model.NoteEntity
+import com.github.skytoph.note.feature.note.domain.cache.MutableCache
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.NoteTextFieldState
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEvent
 import com.github.skytoph.note.ui.theme.NoteColors
@@ -20,7 +20,7 @@ class BaseNoteCommunication(
         mutableStateOf(NoteTextFieldState()),
     private val noteColor: MutableState<Int> = mutableStateOf(NoteColors.list.random().toArgb()),
     private val eventFlow: MutableSharedFlow<UiEvent> = MutableSharedFlow(),
-    private val noteIdCache: NoteIdCache
+    private val noteIdCache: MutableCache<Int?>
 ) : NoteCommunication.Mutable, NoteCommunication {
 
     override fun showNote(note: NoteEntity) {
@@ -82,5 +82,3 @@ class BaseNoteCommunication(
         id = noteIdCache.getCached()
     )
 }
-
-class NoteIdCache : MutableCache.Nullable<Int>(null)

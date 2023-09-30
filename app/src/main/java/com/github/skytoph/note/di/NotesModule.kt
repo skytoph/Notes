@@ -3,8 +3,8 @@ package com.github.skytoph.note.di
 import com.github.skytoph.note.feature.note.domain.notes.interactor.NotesInteractor
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 import com.github.skytoph.note.feature.note.presentation.notes.CachedJob
-import com.github.skytoph.note.feature.note.presentation.notes.interactor.BaseNotesInteractor
-import com.github.skytoph.note.feature.note.presentation.notes.interactor.NoteCache
+import com.github.skytoph.note.feature.note.domain.notes.interactor.BaseNotesInteractor
+import com.github.skytoph.note.feature.note.data.cache.NoteCache
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

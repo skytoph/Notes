@@ -1,13 +1,14 @@
 package com.github.skytoph.note.di
 
 import com.github.skytoph.note.feature.note.domain.add_edit_note.interactor.AddEditNoteInteractor
+import com.github.skytoph.note.feature.note.domain.cache.MutableCache
 import com.github.skytoph.note.feature.note.domain.usecase.NoteUseCases
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.UiEventMapper
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.interactor.BaseAddEditNoteInteractor
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.mapper.BaseUiEventMapper
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.state.BaseNoteCommunication
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.state.NoteCommunication
-import com.github.skytoph.note.feature.note.presentation.add_edit_note.state.NoteIdCache
+import com.github.skytoph.note.feature.note.data.cache.NoteIdCache
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,10 +30,10 @@ object AddEditNoteModule {
 
     @Provides
     @ViewModelScoped
-    fun communication(cache: NoteIdCache): NoteCommunication.Mutable =
+    fun communication(cache: MutableCache<Int?>): NoteCommunication.Mutable =
         BaseNoteCommunication(noteIdCache = cache)
 
     @Provides
     @ViewModelScoped
-    fun cache(): NoteIdCache = NoteIdCache()
+    fun cache(): MutableCache<Int?> = NoteIdCache()
 }
