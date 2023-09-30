@@ -1,11 +1,14 @@
 package com.github.skytoph.note.feature.note.presentation.add_edit_note
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.github.skytoph.note.R
 import com.github.skytoph.note.feature.note.domain.model.Note
 import com.github.skytoph.note.feature.note.presentation.add_edit_note.components.AddEditNote
 import com.github.skytoph.note.ui.theme.NoteAppTheme
@@ -16,6 +19,10 @@ fun AddEditNoteScreen(
     navController: NavController,
     viewModel: AddEditNoteViewModel = hiltViewModel(),
 ) {
+    val titleHint = stringResource(id = R.string.edit_title)
+    val contentHint = stringResource(id = R.string.edit_content)
+    LaunchedEffect(Unit) { viewModel.init(titleHint, contentHint) }
+
     val state = viewModel.provideState()
     val titleState = state.titleState()
     val contentState = state.contentState()

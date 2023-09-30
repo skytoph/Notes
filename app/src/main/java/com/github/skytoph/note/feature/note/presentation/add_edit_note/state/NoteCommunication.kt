@@ -11,14 +11,24 @@ interface NoteCommunication {
 
     interface ChangeNoteState {
         fun showNote(note: Note)
-        fun showTitle(title: String? = null, titleFocus: FocusState? = null)
-        fun showContent(content: String? = null, contentFocus: FocusState? = null)
         fun showColor(color: Int? = null)
+        fun showTitle(
+            title: String? = null, hint: String? = null, titleFocus: FocusState? = null
+        )
+
+        fun showContent(
+            content: String? = null, hint: String? = null, contentFocus: FocusState? = null
+        )
     }
 
     interface SetNoteState {
-        fun showTitle(title: String? = null, titleHintVisible: Boolean? = null)
-        fun showContent(content: String? = null, contentHintVisible: Boolean? = null)
+        fun showTitle(
+            title: String? = null, hint: String? = null, titleHintVisible: Boolean? = null
+        )
+
+        fun showContent(
+            content: String? = null, hint: String? = null, contentHintVisible: Boolean? = null
+        )
     }
 
     interface ShowNote {

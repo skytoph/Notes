@@ -18,6 +18,12 @@ sealed class AddEditNoteEvent {
             communication.showTitle(titleFocus = focusState)
     }
 
+    data class SetTitleHint(val value: String) : AddEditNoteEvent() {
+
+        override fun handle(communication: NoteCommunication.ChangeNoteState) =
+            communication.showTitle(hint = value)
+    }
+
     data class EnteredContent(val value: String) : AddEditNoteEvent() {
 
         override fun handle(communication: NoteCommunication.ChangeNoteState) =
@@ -28,6 +34,12 @@ sealed class AddEditNoteEvent {
 
         override fun handle(communication: NoteCommunication.ChangeNoteState) =
             communication.showContent(contentFocus = focusState)
+    }
+
+    data class SetContentHint(val value: String) : AddEditNoteEvent() {
+
+        override fun handle(communication: NoteCommunication.ChangeNoteState) =
+            communication.showContent(hint = value)
     }
 
     data class ChangeColor(val color: Int) : AddEditNoteEvent() {

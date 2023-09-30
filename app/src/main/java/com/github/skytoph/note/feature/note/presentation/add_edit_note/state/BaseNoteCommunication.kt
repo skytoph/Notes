@@ -29,28 +29,31 @@ class BaseNoteCommunication(
         noteIdCache.cache(note.id)
     }
 
-    override fun showTitle(title: String?, titleFocus: FocusState?) =
+    override fun showTitle(title: String?, hint: String?, titleFocus: FocusState?) =
         showTitle(
             title = title,
+            hint = hint,
             titleHintVisible = if (titleFocus == null) null else !titleFocus.isFocused && noteTitle.value.text.isBlank()
         )
 
-    override fun showTitle(title: String?, titleHintVisible: Boolean?) {
+    override fun showTitle(title: String?, hint: String?, titleHintVisible: Boolean?) {
         title?.let { noteTitle.value = noteTitle.value.copy(text = title) }
+        hint?.let { noteTitle.value = noteTitle.value.copy(hint = hint) }
         titleHintVisible?.let {
             noteTitle.value = noteTitle.value.copy(isHintVisible = titleHintVisible)
         }
     }
 
-    override fun showContent(content: String?, contentFocus: FocusState?) {
+    override fun showContent(content: String?, hint: String?, contentFocus: FocusState?) {
         val titleHintVisible: Boolean? =
             if (contentFocus == null) null
             else !contentFocus.isFocused && noteContent.value.text.isBlank()
-        showContent(content, titleHintVisible)
+        showContent(content, hint = hint, contentHintVisible = titleHintVisible)
     }
 
-    override fun showContent(content: String?, contentHintVisible: Boolean?) {
+    override fun showContent(content: String?, hint: String?, contentHintVisible: Boolean?) {
         content?.let { noteContent.value = noteContent.value.copy(text = content) }
+        hint?.let { noteContent.value = noteContent.value.copy(hint = hint) }
         contentHintVisible?.let {
             noteContent.value = noteContent.value.copy(isHintVisible = contentHintVisible)
         }

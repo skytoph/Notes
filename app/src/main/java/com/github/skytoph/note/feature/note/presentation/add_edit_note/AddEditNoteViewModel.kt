@@ -15,13 +15,17 @@ class AddEditNoteViewModel @Inject constructor(
     private val interactor: AddEditNoteInteractor,
     private val uiEventMapper: UiEventMapper,
     private val state: NoteCommunication.Mutable,
-    savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    init {
+    fun init(titleHint: String, contentHint: String) {
         savedStateHandle.get<Int>(Screen.AddEditNoteScreen.noteIdArg)?.let { noteId ->
             if (noteId != -1) viewModelScope.launch {
                 interactor.getNote(noteId)?.let { note -> state.showNote(note) }
+            }
+            else{
+                onEvent(AddEditNoteEvent.SetTitleHint(titleHint))
+                onEvent(AddEditNoteEvent.SetContentHint(contentHint))
             }
         }
     }
